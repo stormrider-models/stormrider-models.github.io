@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<hml>
+<head>
+<title>FurAffinity roulette</title>
+<script>
+
+function redirectToRandomSubmittion() {
+	var submissionId = Math.floor(Math.random() * 50263032);
+	window.open("https://www.furaffinity.net/view/"+submissionId, '_blank');
+}
+
+</script>
+</head>
+<body>
+<div><button onclick="redirectToRandomSubmittion()">hit me</button></div>
+</body>
+</html>
