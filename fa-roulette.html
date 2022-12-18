@@ -4,24 +4,18 @@
 <title>FurAffinity roulette</title>
 <script>
 
-function redirectToRandomSubmittion() {
-	fetch('https://www.furaffinity.net/')
-		.then(text => {
-		const parser = new DOMParser();
-		const htmlDocument = parser.parseFromString(text, "text/html"); 
-		console.log(text.text());
-		const figure = htmlDocument.documentElement.querySelector("#gallery-frontpage-submissions > figure");
-		console.log(figure);
-	});
-	const submissionId = Math.floor(Math.random() * 50263032);
-	console.log(submissionId);
+function redirectToRandomSubmission() {
+	const maxNumber = document.querySelector("#maxSubmissionNumber")?.value;
+	const actualMaxNumber = (maxNumber == null || maxNumber == '') ? 50263477 : maxNumber;
+	const submissionId = Math.floor(Math.random() * actualMaxNumber);
 	window.open("https://www.furaffinity.net/view/"+submissionId, '_blank');
 }
 
 </script>
 </head>
 <body>
-<div><button style="font-size: 200%; padding: .3em 1em;" onclick="redirectToRandomSubmittion()">hit me</button></div>
-<div style="font-size: 75%; margin-top: 2em;">by <a href="https://www.furaffinity.net/user/stormrider">Stormrider</a></div>
+<div><button style="font-size: 200%; padding: .3em 1em;" onclick="redirectToRandomSubmission()">hit me</button></div>
+<div style="margin-top: 2em; font-size: 75%;"><label>max submission #</label><input style="margin-left: 4px" id="maxSubmissionNumber" type="text" placeholder="50263477" /></div>
+<div style="font-size: 75%; margin-top: .5em;">by <a href="https://www.furaffinity.net/user/stormrider">Stormrider</a></div>
 </body>
 </html>
