@@ -5,6 +5,15 @@
 <script>
 
 function redirectToRandomSubmission() {
+	fetch('https://www.furaffinity.net/')
+		.then(text => {
+		const parser = new DOMParser();
+		const htmlDocument = parser.parseFromString(text, "text/html"); 
+		console.log(text.text());
+		const figure = htmlDocument.documentElement.querySelector("#gallery-frontpage-submissions > figure");
+		console.log(figure);
+		console.log(figure.id);
+	});
 	const maxNumber = document.querySelector("#maxSubmissionNumber")?.value;
 	const actualMaxNumber = (maxNumber == null || maxNumber == '') ? 50263477 : maxNumber;
 	const submissionId = Math.floor(Math.random() * actualMaxNumber);
